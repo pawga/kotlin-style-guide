@@ -21,16 +21,41 @@
 12. [Файлы](#files)
 
 
-# <a name='linelength '>Длина строки</a>
+# <a name='linelength'>Длина строки</a>
 - Максимальная длина строки: 120 символов.
 
 # <a name='naming'>Правила именования</a>
+Следуем тому, что Kotlin JVM совместимый язык
 - Неизменяемые поля в (Companion) Object и compile-time константы именуются в стиле SCREAMING_SNAKE_CASE
 - Для полей View из Kotlin Extension используется стиль lower_snake_case
 - Любые другие поля именуются в стиле lowerCamelCase
 - Функции именуются в стиле lowerCamelCase
 - Классы именуются в стиле UpperCamelCase
-- Пакеты именуются в стиле lower_snake_case
+- Пакеты именуются в стиле lowersnakecase
+
+Использование сложно составных словосочетаний в имени пакета запрещается, так как его, естественно, сложно будет в таком формате вычленить
+
+- Другое (Misc)
+
+В коде аббевиатуры следует воспринимать как слова. Например:
+
+### BAD:
+
+XMLHTTPRequest
+
+URL: String? 
+
+findPostByID
+
+
+### GOOD:
+
+XmlHttpRequest
+
+url: String
+
+findPostById
+
 
 # <a name='modifier_order'>Порядок следования модификаторов</a>
 1) override
