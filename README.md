@@ -25,7 +25,7 @@
 - Максимальная длина строки: 120 символов.
 
 # <a name='naming'>Правила именования</a>
-Следуем тому, что Kotlin JVM совместимый язык
+Следуем тому, что Kotlin JVM совместимый язык. Все ниже приведенные правила именования взяты из общепринятых стандартов, например [отсюда](https://google.github.io/styleguide/javaguide.html)
 - Неизменяемые поля в (Companion) Object и compile-time константы именуются в стиле SCREAMING_SNAKE_CASE
 - Для полей View из Kotlin Extension используется стиль lower_snake_case
 - Любые другие поля именуются в стиле lowerCamelCase
@@ -33,29 +33,53 @@
 - Классы именуются в стиле UpperCamelCase
 - Пакеты именуются в стиле lowersnakecase
 
-Использование сложно составных словосочетаний в имени пакета запрещается, так как его, естественно, сложно будет в таком формате вычленить
+		Использование сложно составных словосочетаний в имени пакета запрещается, 
+		так как его, естественно, сложно будет в таком формате вычленить
+### BAD:
 
-- Другое (Misc)
-
-В коде аббевиатуры следует воспринимать как слова. Например:
+```kotlin
+return_to_call
+```
 
 ### BAD:
 
-XMLHTTPRequest
+```kotlin
+returnToCall
+```
 
-URL: String? 
+### BAD:
 
-findPostByID
-
+```kotlin
+returntocall
+```
 
 ### GOOD:
 
+Создать пакет call, внутри него создать пакет pickup
+```kotlin
+├─ call
+│  ├─ pickup
+```
+	
+- Другое (Misc)
+
+В коде, аббевиатуры, следует воспринимать как слова. Например:
+
+### BAD:
+
+```kotlin
+XMLHTTPRequest
+URL: String? 
+findPostByID
+```
+
+### GOOD:
+
+```kotlin
 XmlHttpRequest
-
 url: String
-
 findPostById
-
+```
 
 # <a name='modifier_order'>Порядок следования модификаторов</a>
 1) override
@@ -115,6 +139,7 @@ runOperation(
 ## <a name='calling_function_variable'>Вызов переменной функционального типа</a>
 
 * Всегда использовать полный вариант с написанием `invoke` у переменной вместо использования сокращенного варианта:
+
 ```kotlin
 fun runAndCall(expression: () -> Unit): Result {
         val result = run()
@@ -130,6 +155,33 @@ fun runAndCall(expression: () -> Unit): Result {
 
 # <a name='classes'>Классы</a>
 - При необходимости разрыва строки осуществляется перенос каждого параметра класса на новую строку с двойным отступом и переносом закрывающейся круглой скобки на следующую строку:
+
+### BAD:
+
+```kotlin
+data class CategoryStatistic(val id: String, val title: String, val imageUrl: String, val percent: Double) : Serializable
+```
+
+### BAD:
+
+```kotlin
+data class CategoryStatistic(val id: String, val title: String,
+                		val imageUrl: String, val percent: Double
+) : Serializable
+```
+
+### BAD:
+
+```kotlin
+data class CategoryStatistic(
+                val id: String,
+                val title: String,
+                val imageUrl: String,
+                val percent: Double) : Serializable
+```
+
+### GOOD:
+
 ```kotlin
 data class CategoryStatistic(
                 val id: String,
@@ -138,6 +190,13 @@ data class CategoryStatistic(
                 val percent: Double
 ) : Serializable
 ```
+
+### GOOD:
+
+```kotlin
+data class CategoryStatistic(val id: String, val title: String) : Serializable
+```
+
 - Если в описании класса родительский класс не помещается на одной строке, также осуществляется перенос каждого из его параметров на новую строку с переносом закрывающей круглой скобки на следующую строку.
 - Если описание класса не помещается в одну строку и реализует несколько интерфейсов, то применять стандартные правила переносов, т.е. делать перенос только в случае, когда не помещается на одну строку, и продолжать перечисление интерфейсов на следующей строке.
 - Использование именованного синтаксиса аргументов остается на усмотрение разработчика. Стоит руководствоваться сложностью используемого конструктора класса: если конструктор с переданными в него параметрами понятен и очевиден, нет необходимости использовать именованные параметры.
@@ -181,6 +240,7 @@ viewPager.adapter = QuestAdapter(quest, { quest ->
 })
 ```
 - Неиспользуемые параметры лямбда-выражений всегда заменять символом `_`.
+- Опускается один неиспользуемый параметр в лямба-выражениях.
 - Избегать использования Destrucion Declaration в лямбда-выражениях.
 
 # <a name='condition_operator'>Использование условных операторов</a>
