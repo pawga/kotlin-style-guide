@@ -25,7 +25,7 @@
 - Максимальная длина строки: 120 символов.
 
 # <a name='naming'>Правила именования</a>
-Следуем тому, что Kotlin JVM совместимый язык. Все ниже приведенные правила именования взяты из общепринятых стандартов, например [отсюда](https://google.github.io/styleguide/javaguide.html)
+Следуем тому, что Kotlin JVM совместимый язык. Все ниже приведенные правила именования взяты из общепринятых стандартов, например [отсюда](https://google.github.io/styleguide/javaguide.html).
 - Неизменяемые поля в (Companion) Object и compile-time константы именуются в стиле SCREAMING_SNAKE_CASE
 - Для полей View из Kotlin Extension используется стиль lower_snake_case
 - Любые другие поля именуются в стиле lowerCamelCase
@@ -240,7 +240,47 @@ viewPager.adapter = QuestAdapter(quest, { quest ->
 })
 ```
 - Неиспользуемые параметры лямбда-выражений всегда заменять символом `_`.
+	
+		Обратите внимание на второй параметр, при определении BiFunction
+### BAD:
+
+```kotlin
+fun createBiFunction(defaultSchema: String): BiFunction {
+	return BiFunction { value, schema ->
+			Bundle().apply {
+			    putString("value", value)
+			    putString("schema", defaultSchema)
+			}
+		    }
+}
+```
+
+### BAD:
+
+```kotlin
+fun createBiFunction(defaultSchema: String): BiFunction {
+	return BiFunction { value, _ ->
+			Bundle().apply {
+			    putString("value", value)
+			    putString("schema", defaultSchema)
+			}
+		    }
+}
+```
+
 - Опускается один неиспользуемый параметр в лямба-выражениях.
+
+### BAD:
+
+```kotlin
+button.setOnClickListener( _ -> doSomething())
+```
+
+### GOOD:
+
+```kotlin
+button.setOnClickListener(doSomething())
+```
 - Избегать использования Destrucion Declaration в лямбда-выражениях.
 
 # <a name='condition_operator'>Использование условных операторов</a>
