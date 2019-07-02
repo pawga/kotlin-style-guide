@@ -255,7 +255,7 @@ fun createBiFunction(defaultSchema: String): BiFunction {
 }
 ```
 
-### BAD:
+### GOOD:
 
 ```kotlin
 fun createBiFunction(defaultSchema: String): BiFunction {
