@@ -332,7 +332,10 @@ when (feed.type) {
 
 # <a name='template_header'>Template header</a>
 
-- Не использовать Template Header для классов (касается авторства и даты создания файла).
+- Использовать Template Header для классов. Template:
+/**
+* Created by ${USER} on ${DATE} ${TIME}
+*/
 
 # <a name='files'>Файлы</a>
 
