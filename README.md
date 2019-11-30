@@ -31,10 +31,8 @@
 - Любые другие поля именуются в стиле lowerCamelCase
 - Функции именуются в стиле lowerCamelCase
 - Классы именуются в стиле UpperCamelCase
-- Пакеты именуются в стиле lowersnakecase
+- Имена пакетов всегда в нижнем регистре, не использовать символ подчеркивания в имени пакета(org.example.project). Не использовать имена из нескольких слов в пакете.
 
-		Использование сложно составных словосочетаний в имени пакета запрещается, 
-		так как его, естественно, сложно будет в таком формате вычленить
 ### BAD:
 
 ```kotlin
@@ -82,16 +80,19 @@ findPostById
 ```
 
 # <a name='modifier_order'>Порядок следования модификаторов</a>
-1) override
-2) public / protected / private / internal
-3) final / open / abstract
-4) const / lateinit
-5) inner
+
+1) public / protected / private / internal
+2) abstract / final / open / const
+3) lateinit
+4) override
+5) suspend
 6) enum / annotation / sealed / data
 7) companion
-8) inline
-9) infix
-10) operator
+8) inner
+9) inline
+10) infix
+11) operator
+
 
 # <a name='expression_formating'>Форматирование выражений</a>
 
