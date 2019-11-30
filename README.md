@@ -81,10 +81,10 @@ findPostById
 
 # <a name='modifier_order'>Порядок следования модификаторов</a>
 
-1) public / protected / private / internal
-2) abstract / final / open / const
-3) lateinit
-4) override
+1) override
+2) public / protected / private / internal
+3) abstract / final / open / const
+4) lateinit
 5) suspend
 6) enum / annotation / sealed / data
 7) companion
@@ -223,7 +223,7 @@ var promoItem: PromoItem? = null
 7) internal методы
 8) protected методы
 9) private методы
-10) inner, sealed классы
+10) inner, sealed, data классы
 11) companion object
 
 # <a name='lambda_formating'>Форматирование лямбда-выражений</a>
